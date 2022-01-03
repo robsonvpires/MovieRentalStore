@@ -2,4 +2,5 @@
 
 .vs/
 
-MovieRentalStore/bin/
+bin
+obj
