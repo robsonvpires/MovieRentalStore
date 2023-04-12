@@ -14,10 +14,11 @@ public class Movie
         RuntimeCategory = SetRuntimeCategory(runtime);
     }
 
-    [Required(AllowEmptyStrings = false, ErrorMessage = "Title is mandadory")]
+    [Required(AllowEmptyStrings = false, ErrorMessage = "Title is mandadory.")]
     [StringLength(155, MinimumLength = 3, ErrorMessage = "Title's lenght must be between 3 and 155 characters.")]
     public string Title { get; private set; }
 
+    [Required(ErrorMessage ="Release date is mandatory.")]
     public DateTime Release { get; private set; }
 
     public IEnumerable<Genre> Genres { get; private set; }
