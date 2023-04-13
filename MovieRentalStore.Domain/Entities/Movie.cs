@@ -11,7 +11,6 @@ public class Movie
         Release = release;
         Genres = genre;
         Runtime = runtime;
-        RuntimeCategory = SetRuntimeCategory(runtime);
     }
 
     [Required(AllowEmptyStrings = false, ErrorMessage = "Title is mandadory.")]
@@ -25,13 +24,20 @@ public class Movie
 
     public TimeSpan Runtime { get; private set; }
 
-    public RuntimeCategory RuntimeCategory { get; private set; }
-
-    private RuntimeCategory SetRuntimeCategory(TimeSpan runtime)
+    public RuntimeCategory RuntimeCategory
     {
-        if (runtime.Minutes >= 40)
-            return RuntimeCategory.FeatureFilm;
+        get { return RuntimeCategory; }
+        set
+        {
+            if (Runtime.TotalMinutes >= 40)
+            {
+                RuntimeCategory = RuntimeCategory.FeatureFilm;
+            }
+            else
+            {
+                RuntimeCategory = RuntimeCategory.ShortFilm;
+            }
 
-        return RuntimeCategory.ShortFilm;
+        }
     }
 }
