@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MovieRentalStore.Domain.Entities;
 
-public class Movie
+public class Movie : BaseEntity
 {
     public Movie(string title,DateTime release, IEnumerable<Genre> genre, TimeSpan runtime) 
     {
@@ -40,4 +40,7 @@ public class Movie
 
         }
     }
+
+    public IEnumerable<Person> Actors { get; set; }
+    public IEnumerable<Person> Directors { get; set; }
 }

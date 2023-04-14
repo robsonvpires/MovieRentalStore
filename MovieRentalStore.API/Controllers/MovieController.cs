@@ -15,14 +15,14 @@ public class MovieController : ControllerBase
 
     [HttpPost]
     [SwaggerOperation(Summary = "Add new movie", Description = "Add new movie.")]
-    public IActionResult Add([FromBody]MovieInpuModel movie)
+    public IActionResult Add([FromBody] MovieInputModel movie)
     {
         return Ok(movie);
     }
 
     [HttpPut]
     [SwaggerOperation(Summary = "Update a movie", Description = "Update existing movie.")]
-    public IActionResult Update([FromBody] MovieInpuModel movie)
+    public IActionResult Update([FromBody] MovieInputModel movie)
     {
         return Ok(movie);
     }
@@ -30,11 +30,11 @@ public class MovieController : ControllerBase
 
     [HttpGet]
     [SwaggerOperation(Summary = "Get movies by title", Description = "Return all movies that contains the string in the title.")]
-    public IEnumerable<MovieInpuModel> GetListByTitle([FromQuery]string title)
+    public IEnumerable<MovieInputModel> GetListByTitle([FromQuery]string title)
     {
-        MovieInpuModel movie = new() { Title = title };
+        MovieInputModel movie = new() { Title = title };
 
-        List<MovieInpuModel> result = new() { movie };
+        List<MovieInputModel> result = new() { movie };
 
         return result;
     }
