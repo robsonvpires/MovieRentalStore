@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MovieRentalStore.CrossCutting\MovieRentalStore.CrossCutting.csproj" />
+    <ProjectReference Include="..\MovieRentalStore.DTO\MovieRentalStore.API.DTO.csproj" />
+  </ItemGroup>
+
 </Project>

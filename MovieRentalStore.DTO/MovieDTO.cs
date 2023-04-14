@@ -1,6 +1,6 @@
-﻿namespace MovieRentalStore.API.DTOs;
+﻿namespace MovieRentalStore.API.DTO;
 
-public class MovieInputModel
+public class MovieDTO
 {
     public string Title { get; set; }
     public DateTime release { get; set; }

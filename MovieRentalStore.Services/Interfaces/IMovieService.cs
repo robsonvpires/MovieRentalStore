@@ -1,11 +1,11 @@
-﻿using MovieRentalStore.API.DTOs;
+﻿using MovieRentalStore.API.DTO;
 
 namespace MovieRentalStore.Services.Interfaces;
 
 public interface IMovieService
 {
-    public string Add(MovieInputModel movie);
-    public bool Remove();
-    public void Update(MovieInputModel movie);
-    public IEnumerable<MovieInputModel> GetListByTitle(string title);
+    public string Add(MovieDTO movie);
+    public bool Delete(string id);
+    public void Update(MovieDTO movie);
+    public IEnumerable<MovieDTO> GetListByTitle(string title);
 }

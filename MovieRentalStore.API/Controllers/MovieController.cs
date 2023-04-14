@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MovieRentalStore.API.DTOs;
+using MovieRentalStore.API.DTO;
+using MovieRentalStore.Services.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace MovieRentalStore.API.Controllers;
@@ -8,40 +9,45 @@ namespace MovieRentalStore.API.Controllers;
 [ApiController]
 public class MovieController : ControllerBase
 {
-    public MovieController() 
+    private readonly IMovieService _movieService;
+
+    public MovieController(IMovieService movieService) 
     {
-        
+        _movieService = movieService;
     }
 
     [HttpPost]
     [SwaggerOperation(Summary = "Add new movie", Description = "Add new movie.")]
-    public IActionResult Add([FromBody] MovieInputModel movie)
+    public IActionResult Add([FromBody] MovieDTO movie)
     {
-        return Ok(movie);
+        string result = _movieService.Add(movie);
+        return Ok(result);
     }
 
     [HttpPut]
     [SwaggerOperation(Summary = "Update a movie", Description = "Update existing movie.")]
-    public IActionResult Update([FromBody] MovieInputModel movie)
+    public IActionResult Update([FromBody] MovieDTO movie)
     {
-        return Ok(movie);
+        _movieService.Update(movie);
+        return Ok();
     }
 
 
     [HttpGet]
     [SwaggerOperation(Summary = "Get movies by title", Description = "Return all movies that contains the string in the title.")]
-    public IEnumerable<MovieInputModel> GetListByTitle([FromQuery]string title)
+    public IEnumerable<MovieDTO> GetListByTitle([FromQuery]string title)
     {
-        MovieInputModel movie = new() { Title = title };
+        MovieDTO movie = new() { Title = title };
 
-        List<MovieInputModel> result = new() { movie };
+        List<MovieDTO> result = new() { movie };
 
         return result;
     }
 
     [HttpDelete]
-    public IActionResult Delete([FromQuery]int id) 
+    public IActionResult Delete([FromQuery]string id) 
     {
-        return Delete(id);
+        var result = _movieService.Delete(id);
+        return Ok(result);
     }
 }
