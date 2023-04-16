@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MovieRentalStore.Services.Interfaces;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace MovieRentalStore.API.Controllers;
@@ -7,16 +8,19 @@ namespace MovieRentalStore.API.Controllers;
 [ApiController]
 public class GenreController : ControllerBase
 {
-    public GenreController()
-    {
+    private readonly IGenreService _genreService;
 
+    public GenreController(IGenreService genreService)
+    {
+        _genreService = genreService;
     }
 
     [HttpGet]
     [SwaggerOperation(Summary = "List all genres", Description = "List all genres and its numerical reference.")]
     public IActionResult GetList()
     {
-        return Ok();
+        var result = _genreService.GetList();
+        return Ok(result);
     }
 
 }

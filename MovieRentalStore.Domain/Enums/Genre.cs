@@ -2,7 +2,7 @@
 
 public enum Genre
 {
-    Action = 1,
+    Action = 9,
     Adventure = 2,
     Comedy = 3,
     Fantasy = 4,
@@ -10,4 +10,5 @@ public enum Genre
     Horror = 6,
     Romance = 7,
     ScienceFiction = 8
+
 }
