@@ -5,7 +5,7 @@ namespace MovieRentalStore.Domain.Entities;
 
 public class Movie : BaseEntity
 {
-    public Movie(string title,DateTime release, IEnumerable<Genre> genre, TimeSpan runtime) 
+    public Movie(string title, DateTime release, IEnumerable<Genre> genre, TimeSpan runtime) 
     {
         Title = title;
         Release = release;

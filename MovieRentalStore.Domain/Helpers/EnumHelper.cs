@@ -1,10 +1,8 @@
-﻿using MovieRentalStore.Domain.Enums;
-
-namespace MovieRentalStore.Domain.Helpers;
+﻿namespace MovieRentalStore.Domain.Helpers;
 
 public class EnumHelper
 {
-    public static List<string> GetEnumValuesAndNamesList<T>()
+    public static List<string> GetValuesAndNamesList<T>()
     {
         List<string> list = new();
 

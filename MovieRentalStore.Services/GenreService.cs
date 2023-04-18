@@ -10,7 +10,7 @@ public class GenreService : IGenreService
 
     public IEnumerable<string> GetList()
     {
-        IEnumerable<string> result = EnumHelper.GetEnumValuesAndNamesList<Genre>();
+        IEnumerable<string> result = EnumHelper.GetValuesAndNamesList<Genre>();
         return result;
     }
 }
